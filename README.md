@@ -4,8 +4,9 @@
 ![python](https://img.shields.io/badge/python-3.8%2B-green)
 ![streamlit](https://img.shields.io/badge/streamlit-1.x-red)
 
-> A Streamlit app for weighing life's important decisions through structured pros & cons analysis.
-> 用結構化的方式量化人生重要決策，透過 Pro/Con 因子評分找出最佳選擇。
+> When facing major life decisions — whether to pursue a PhD, change jobs, buy a house, or move abroad — gut feelings alone often aren't enough. **LifeScale** helps you break the decision down into concrete factors, assign each one a direction (Pro or Con) and an importance score (1–10), and instantly see the overall balance through metrics and an interactive chart.
+>
+> 面對人生重大決策時——念 PhD、換工作、買房、出國——光靠直覺往往不夠。**LifeScale** 讓你把決策拆解成具體的影響因子，逐一標記方向（Pro / Con）與重要程度（1–10 分），即時透過指標卡片與互動圖表看清整體傾向，幫助你做出更有依據的選擇。
 
 ---
 
