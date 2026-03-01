@@ -165,17 +165,19 @@ def _load():
 def _save():
     with open(_DATA_FILE, 'w', encoding='utf-8') as f:
         json.dump({'title': st.session_state.title,
-                   'factors': st.session_state.factors}, f,
+                   'factors': st.session_state.factors,
+                   'custom_cats': st.session_state.custom_cats}, f,
                   ensure_ascii=False, indent=2)
 
 # ── Session state ──────────────────────────────────────────────
 if 'loaded' not in st.session_state:
     _d = _load()
-    st.session_state.factors    = _d.get('factors', [])
-    st.session_state.title      = _d.get('title', '人生重要決定')
+    st.session_state.factors     = _d.get('factors', [])
+    st.session_state.title       = _d.get('title', '人生重要決定')
+    st.session_state.custom_cats = _d.get('custom_cats', [])
     st.session_state.editing_idx = None
-    st.session_state.sort_by    = "輸入順序"
-    st.session_state.loaded     = True
+    st.session_state.sort_by     = "輸入順序"
+    st.session_state.loaded      = True
 
 # ── Header ─────────────────────────────────────────────────────
 st.markdown(f'<p class="big-title">⚖️ {st.session_state.title}</p>', unsafe_allow_html=True)
@@ -222,7 +224,8 @@ with st.expander("❕ 使用說明"):
 st.markdown("---")
 
 # ── Preset categories ──────────────────────────────────────────
-PRESET_CATS = ["家庭", "經濟", "未來發展性", "研究興趣", "職涯發展", "地點", "時間成本", "＋ 自行輸入"]
+_BASE_CATS  = ["家庭", "經濟", "未來發展性", "研究興趣", "職涯發展", "地點", "時間成本"]
+PRESET_CATS = _BASE_CATS + st.session_state.custom_cats + ["＋ 自行輸入"]
 
 # ── Add / Edit form ────────────────────────────────────────────
 is_editing = st.session_state.editing_idx is not None
@@ -264,6 +267,8 @@ with st.expander(form_label, expanded=True):
         if st.button("💾 儲存修改" if is_editing else "➕ 新增",
                      type="primary", use_container_width=True):
             if inp_cat:
+                if inp_cat not in _BASE_CATS and inp_cat not in st.session_state.custom_cats:
+                    st.session_state.custom_cats.append(inp_cat)
                 entry = {'category': inp_cat, 'description': inp_desc,
                          'side': inp_side, 'score': inp_score}
                 if is_editing:
