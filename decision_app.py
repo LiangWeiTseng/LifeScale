@@ -182,13 +182,14 @@ st.markdown(f'<p class="big-title">⚖️ {st.session_state.title}</p>', unsafe_
 st.markdown('<p class="sub-header">系統化評估你的決策，量化每個影響因子</p>', unsafe_allow_html=True)
 
 # 標題修改輸入框
-new_title = st.text_input("修改標題", value=st.session_state.title,
-                           label_visibility="collapsed")
-st.caption("✏️ 修改後按 Enter 即套用")
-if new_title.strip() and new_title.strip() != st.session_state.title:
-    st.session_state.title = new_title.strip()
-    _save()
-    st.rerun()
+_inp_col, _ = st.columns([2, 1])
+with _inp_col:
+    new_title = st.text_input("修改標題　✏️ 修改後按 Enter 即套用",
+                               value=st.session_state.title)
+    if new_title.strip() and new_title.strip() != st.session_state.title:
+        st.session_state.title = new_title.strip()
+        _save()
+        st.rerun()
 
 with st.expander("❕ 使用說明"):
     st.markdown("""
