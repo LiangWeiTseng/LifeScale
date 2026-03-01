@@ -77,6 +77,42 @@ The browser will open automatically. Data is auto-saved to `decision_data.json` 
 
 ---
 
+## Example Use Cases 使用情境
+
+LifeScale works for any high-stakes personal decision. Here are some real-world examples:
+
+### 🎓 要不要念 PhD？
+| Category 分類 | Description 描述 | Side | Score |
+|---|---|---|---|
+| 研究興趣 | 對研究主題充滿熱情 | Pro | 9 |
+| 職涯發展 | 契合學術職涯規劃 | Pro | 7 |
+| 經濟 | 獎學金足以支付生活 | Pro | 6 |
+| 經濟 | 與業界薪資的機會成本差距 | Con | 8 |
+| 家庭 | 長期與家人分隔兩地 | Con | 7 |
+| 時間成本 | 需要 4–5 年才能完成 | Con | 6 |
+
+---
+
+### 🏠 要不要買房？
+Factors might include: mortgage burden (Con), long-term asset (Pro), renovation cost (Con), location convenience (Pro), market timing risk (Con).
+
+---
+
+### 💼 換工作還是留下？
+Factors might include: salary increase (Pro), longer commute (Con), better growth opportunities (Pro), losing familiar team (Con), job security risk (Con).
+
+---
+
+### 🌏 要不要出國留學？
+Factors might include: broadened perspective (Pro), tuition cost (Con), career differentiation (Pro), distance from family (Con), language barrier (Con).
+
+---
+
+> You can load the PhD example directly in the app via the "📖 載入範例資料" button.
+> 在 app 中可直接點「📖 載入範例資料」載入 PhD 決策範例。
+
+---
+
 ## File Structure 檔案結構
 
 ```
