@@ -322,21 +322,20 @@ else:
     sort_by = tbl_sort.selectbox("排序", ["輸入順序", "依分類", "依分數↓", "依分數↑"],
                                   label_visibility="collapsed")
 
-    factors_view = list(st.session_state.factors)
+    indexed_factors = list(enumerate(st.session_state.factors))
     if sort_by == "依分類":
-        factors_view = sorted(factors_view, key=lambda r: r['category'])
+        indexed_factors = sorted(indexed_factors, key=lambda r: r[1]['category'])
     elif sort_by == "依分數↓":
-        factors_view = sorted(factors_view, key=lambda r: r['score'], reverse=True)
+        indexed_factors = sorted(indexed_factors, key=lambda r: r[1]['score'], reverse=True)
     elif sort_by == "依分數↑":
-        factors_view = sorted(factors_view, key=lambda r: r['score'])
+        indexed_factors = sorted(indexed_factors, key=lambda r: r[1]['score'])
 
     hcols = st.columns([2.2, 4, 1.5, 1.2, 0.9, 0.9])
     for hc, lb in zip(hcols, ["分類", "描述", "方向", "分數", "編輯", "刪除"]):
         hc.markdown(f'<span class="col-head">{lb}</span>', unsafe_allow_html=True)
 
     to_delete = None
-    for view_i, row in enumerate(factors_view):
-        real_i = st.session_state.factors.index(row)
+    for view_i, (real_i, row) in enumerate(indexed_factors):
         rc = st.columns([2.2, 4, 1.5, 1.2, 0.9, 0.9])
         rc[0].write(row['category'])
         rc[1].write(row['description'] or "—")
